@@ -1,0 +1,35 @@
+{
+  "homepage": "https://jelmar.eu/whc",
+  "name": "world-heritage",
+  "version": "1.0.0",
+  "dependencies": {
+    "colormap": "^2.3.0",
+    "font-awesome": "^4.7.0",
+    "google-map-react": "^1.0.5",
+    "html-react-parser": "^0.4.6",
+    "points-cluster": "^0.1.4",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-motion": "^0.5.2",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "scrape_images": "node ./utils/webscraper.js",
+    "scrape_danger": "node ./utils/dangerListScraper.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "invariant": "^2.2.4",
+    "kdbush": "^2.0.1",
+    "rbush": "^2.0.2",
+    "why-did-you-update": "^0.1.1"
+  }
+}
