@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a22125adc2804c51d235602e6dd9d36a",
+    "revision": "23f6714ce03f2961f319836a692f966c",
     "url": "/world-heritage/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/world-heritage/static/css/2.1d413885.chunk.css"
   },
   {
-    "revision": "45ecac6b8097b95b3072",
+    "revision": "b9d655a1bb972c9d0c57",
     "url": "/world-heritage/static/css/main.d6dbfc85.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/world-heritage/static/js/2.3a1ad78d.chunk.js"
   },
   {
-    "revision": "45ecac6b8097b95b3072",
-    "url": "/world-heritage/static/js/main.a62abef5.chunk.js"
+    "revision": "b9d655a1bb972c9d0c57",
+    "url": "/world-heritage/static/js/main.41a4265b.chunk.js"
   },
   {
     "revision": "b2064767ce4901f06063",
