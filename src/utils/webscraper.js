@@ -4,7 +4,7 @@
 
 const cheerio = require('cheerio')
 const path = require('path')
-const json = require('../assets/js/whc-sites-2017.json')
+const json = require('../assets/js/whc-sites-2018.json')
 const fetch = require('node-fetch')
 const download = require('image-downloader')
 const Promise = require('bluebird')

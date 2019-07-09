@@ -16,14 +16,17 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-motion": "^0.5.2",
-    "react-scripts": "3.0.0"
+    "react-scripts": "3.0.0",
+    "xlsx": "^0.14.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "convert_xls": "node ./src/utils/xlstojson.js",
     "scrape_images": "node ./src/utils/webscraper.js",
+    "scrape_captions": "node ./src/utils/captionScraper.js",
     "scrape_danger": "node ./src/utils/dangerListScraper.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"

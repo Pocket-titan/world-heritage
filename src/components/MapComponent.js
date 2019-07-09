@@ -13,7 +13,7 @@ import apiKey from '../assets/js/apikey.js'
 import mapStyle from '../assets/js/mapStyle.json'
 import dangerList from '../assets/js/dangerList.json'
 
-const markerData = require('../assets/js/whc-sites-2017.json')
+const markerData = require('../assets/js/whc-sites-2018.json')
   .map(site => ({
     title: site.name_en,
     lat: parseFloat(site.latitude),
@@ -230,8 +230,10 @@ class MapComponent extends PureComponent {
         >
           <HelpButton />
         </MapControl>
-        {clusters.map(({ id, numPoints, points, ...markerProps }) =>
-          numPoints === 1 ? (
+        {clusters.map(markerProps => {
+          const { id, points, numPoints } = markerProps
+
+          return numPoints === 1 ? (
             <MarkerComponent
               key={id}
               {...points[0]}
@@ -256,8 +258,8 @@ class MapComponent extends PureComponent {
                 })
               }
             />
-          ),
-        )}
+          )
+        })}
       </GoogleMap>
     )
   }

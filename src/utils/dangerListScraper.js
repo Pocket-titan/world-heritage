@@ -2,7 +2,8 @@
   Scraping the UNESCO site for site danger info (endangered sites / danger level)
 */
 
-let cheerio = require('cheerio')
+const cheerio = require('cheerio')
+const path = require('path')
 const fetch = require('node-fetch')
 const fs = require('fs')
 const url = 'http://whc.unesco.org/en/danger/'
@@ -19,16 +20,21 @@ let dangerList = new Promise((resolve, reject) => {
         .filter(link => link.includes('list'))
         .map(link => link.replace('/en/list/', ''))
       return list
-    })()
+    })(),
   )
   reject(() => [])
-});
+})
 
 dangerList.then(res => {
   if (res) {
-    fs.writeFile('../assets/js/dangerList.json', JSON.stringify(res), 'utf8', (err) => {
-      if (err) throw err
-      console.log('Saved!')
-    })
+    fs.writeFile(
+      path.join(__dirname, '../assets/js/dangerList.json'),
+      JSON.stringify(res),
+      'utf8',
+      err => {
+        if (err) throw err
+        console.log('Saved!')
+      },
+    )
   }
 })
