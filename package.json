@@ -1,12 +1,17 @@
 {
-  "homepage": "https://jelmar.eu/whc",
+  "homepage": "https://pocket-titan.github.io/world-heritage",
   "name": "world-heritage",
   "version": "1.0.0",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "colormap": "^2.3.0",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^2.0.1",
     "google-map-react": "^1.0.5",
     "html-react-parser": "^0.4.6",
+    "image-downloader": "^3.4.2",
+    "node-fetch": "^2.6.0",
+    "path": "^0.12.7",
     "points-cluster": "^0.1.4",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -15,19 +20,15 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "scrape_images": "node ./utils/webscraper.js",
-    "scrape_danger": "node ./utils/dangerListScraper.js",
+    "scrape_images": "node ./src/utils/webscraper.js",
+    "scrape_danger": "node ./src/utils/dangerListScraper.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-plugin-flowtype": "^2.50.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
-    "invariant": "^2.2.4",
     "kdbush": "^2.0.1",
     "rbush": "^2.0.2",
     "why-did-you-update": "^0.1.1"

@@ -151,58 +151,56 @@ class MapComponent extends PureComponent {
     const { props } = this
     const { clusters } = this.state
     return (
-      <div style={{width: '100%', height: '100%'}}>
-        <GoogleMap
-          bootstrapURLKeys={{ key: apiKey }}
-          options={props.options}
-          style={props.style}
-          center={this.state.center}
-          zoom={this.state.zoom}
-          onChange={this.onChange}
-          onClick={this.onMapClick}
-          onGoogleApiLoaded={({map, maps}) => {
-            this.map = map
-            this.maps = maps
-            // we need this setState to force a mapcontrol render...
-            this.setState({mapControlShouldRender: true})
-          }}
-          yesIWantToUseGoogleMapApiInternals
+      <GoogleMap
+        bootstrapURLKeys={{ key: apiKey }}
+        options={props.options}
+        style={props.style}
+        center={this.state.center}
+        zoom={this.state.zoom}
+        onChange={this.onChange}
+        onClick={this.onMapClick}
+        onGoogleApiLoaded={({map, maps}) => {
+          this.map = map
+          this.maps = maps
+          // we need this setState to force a mapcontrol render...
+          this.setState({mapControlShouldRender: true})
+        }}
+        yesIWantToUseGoogleMapApiInternals
+      >
+        <MapControl map={this.map || null}
+          controlPosition={this.maps ? this.maps.ControlPosition.TOP_LEFT : null}
         >
-          <MapControl map={this.map || null}
-            controlPosition={this.maps ? this.maps.ControlPosition.TOP_LEFT : null}
-          >
-            <SearchBox data={props.markers} onResultClick={this.onSearchResultClick}/>
-          </MapControl>
-          <MapControl map={this.map || null}
-            controlPosition={this.maps ? this.maps.ControlPosition.TOP_LEFT : null}
-          >
-            <RandomSiteButton onClick={this.panToRandomMarker}/>
-          </MapControl>
-          <MapControl map={this.map || null}
-            controlPosition={this.maps ? this.maps.ControlPosition.TOP_LEFT : null}
-          >
-            <HelpButton/>
-          </MapControl>
-          {
-            clusters.map(({...markerProps, id, numPoints, points}) => (
-              numPoints === 1
-                ? <MarkerComponent
-                    key={id}
-                    {...points[0]}
-                    {...markerProps}
-                    clicked={this.state.clickedMarkerId === id}
-                    onClick={() => this.onMarkerClick({id, lat: markerProps.lat, lng: markerProps.lng})}
-                  />
-                : <ClusterComponent
-                    key={id}
-                    {...markerProps}
-                    onClick={() => this.onClusterClick({lat: markerProps.lat, lng: markerProps.lng})}
-                  />
-                )
+          <SearchBox data={props.markers} onResultClick={this.onSearchResultClick}/>
+        </MapControl>
+        <MapControl map={this.map || null}
+          controlPosition={this.maps ? this.maps.ControlPosition.TOP_LEFT : null}
+        >
+          <RandomSiteButton onClick={this.panToRandomMarker}/>
+        </MapControl>
+        <MapControl map={this.map || null}
+          controlPosition={this.maps ? this.maps.ControlPosition.TOP_LEFT : null}
+        >
+          <HelpButton/>
+        </MapControl>
+        {
+          clusters.map(({...markerProps, id, numPoints, points}) => (
+            numPoints === 1
+              ? <MarkerComponent
+                  key={id}
+                  {...points[0]}
+                  {...markerProps}
+                  clicked={this.state.clickedMarkerId === id}
+                  onClick={() => this.onMarkerClick({id, lat: markerProps.lat, lng: markerProps.lng})}
+                />
+              : <ClusterComponent
+                  key={id}
+                  {...markerProps}
+                  onClick={() => this.onClusterClick({lat: markerProps.lat, lng: markerProps.lng})}
+                />
               )
-            }
-        </GoogleMap>
-      </div>
+            )
+          }
+      </GoogleMap>
     )
   }
 }
