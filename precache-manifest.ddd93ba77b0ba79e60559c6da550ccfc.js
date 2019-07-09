@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "85987519940a3a6e242a517dd11b6e6f",
+    "revision": "a22125adc2804c51d235602e6dd9d36a",
     "url": "/world-heritage/index.html"
   },
   {
-    "revision": "472b91ae0f2b8624c402",
+    "revision": "03b7070d9afeafbe7407",
     "url": "/world-heritage/static/css/2.1d413885.chunk.css"
   },
   {
-    "revision": "04287f4de3a91a878f6f",
+    "revision": "45ecac6b8097b95b3072",
     "url": "/world-heritage/static/css/main.d6dbfc85.chunk.css"
   },
   {
-    "revision": "472b91ae0f2b8624c402",
-    "url": "/world-heritage/static/js/2.f84a66c9.chunk.js"
+    "revision": "03b7070d9afeafbe7407",
+    "url": "/world-heritage/static/js/2.3a1ad78d.chunk.js"
   },
   {
-    "revision": "04287f4de3a91a878f6f",
-    "url": "/world-heritage/static/js/main.a9135de4.chunk.js"
+    "revision": "45ecac6b8097b95b3072",
+    "url": "/world-heritage/static/js/main.a62abef5.chunk.js"
   },
   {
     "revision": "b2064767ce4901f06063",
@@ -494,6 +494,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "68c4210d9fee7f503368976c4322bd28",
     "url": "/world-heritage/static/media/1170.68c4210d.jpg"
+  },
+  {
+    "revision": "ce93f1b1bfff02d238eafc5b51fa2fb2",
+    "url": "/world-heritage/static/media/1174.ce93f1b1.jpg"
   },
   {
     "revision": "238e54b789888d93f10b44845da48b3b",
@@ -1208,6 +1212,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/world-heritage/static/media/1414.5d3ff299.jpg"
   },
   {
+    "revision": "57a7201bd6e0f31f11177378ab764d3f",
+    "url": "/world-heritage/static/media/1415.57a7201b.jpg"
+  },
+  {
     "revision": "c008a73b6778a2a46b3f3d9eb2b18176",
     "url": "/world-heritage/static/media/1416.c008a73b.jpg"
   },
@@ -1254,6 +1262,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "808c8be0d38abf69347fdc3d2629a04a",
     "url": "/world-heritage/static/media/1433.808c8be0.jpg"
+  },
+  {
+    "revision": "8b444de453ed8f1720b30bcd3e73101c",
+    "url": "/world-heritage/static/media/1434.8b444de4.jpg"
   },
   {
     "revision": "a40fc82d3c1cff87c11c5893fc708983",
@@ -1316,6 +1328,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/world-heritage/static/media/145.11ea0eb0.jpg"
   },
   {
+    "revision": "03de5df2a147f34a892dee8c70273679",
+    "url": "/world-heritage/static/media/1450.03de5df2.jpg"
+  },
+  {
     "revision": "6cb72027706925b97e7c4cdaf1d24808",
     "url": "/world-heritage/static/media/1452.6cb72027.jpg"
   },
@@ -1372,6 +1388,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/world-heritage/static/media/147.1fa5bd16.jpg"
   },
   {
+    "revision": "ed4fbe2d190aa73032cb86d2ee2f0911",
+    "url": "/world-heritage/static/media/1470.ed4fbe2d.jpg"
+  },
+  {
     "revision": "97e2ecbccb987a7e39b540641f9e4274",
     "url": "/world-heritage/static/media/1471.97e2ecbc.jpg"
   },
@@ -1394,6 +1414,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "7e9635feb73c616102a4c9db2ae59a3b",
     "url": "/world-heritage/static/media/148.7e9635fe.jpg"
+  },
+  {
+    "revision": "9689a3cc55ee840e16a427e20264edac",
+    "url": "/world-heritage/static/media/1480.9689a3cc.jpg"
   },
   {
     "revision": "67f55908cfc6d83bbef07e445c2d4668",
@@ -1438,6 +1462,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "787aa2926ed0dc4e216f3cc1200bdba2",
     "url": "/world-heritage/static/media/1493.787aa292.jpg"
+  },
+  {
+    "revision": "742a8d268e171f820512d9671684e6f8",
+    "url": "/world-heritage/static/media/1495.742a8d26.jpg"
   },
   {
     "revision": "6aa4ef063629107cda12c98d2eacb8a7",
@@ -1548,12 +1576,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/world-heritage/static/media/1533.a480961c.jpg"
   },
   {
+    "revision": "fff9a7f302a45863ccebb19ea3dc7485",
+    "url": "/world-heritage/static/media/1534.fff9a7f3.jpg"
+  },
+  {
     "revision": "e51e3b98ee369be204ea30f41aa7dd6a",
     "url": "/world-heritage/static/media/1535.e51e3b98.jpg"
   },
   {
     "revision": "922d4484940e3ef02f50ec359cbbab41",
     "url": "/world-heritage/static/media/1536.922d4484.jpg"
+  },
+  {
+    "revision": "e39a4975205540650d8609a789f1f16b",
+    "url": "/world-heritage/static/media/1537.e39a4975.jpg"
+  },
+  {
+    "revision": "064948b0f49c110efdc8081e5c2ebd2a",
+    "url": "/world-heritage/static/media/1538.064948b0.jpg"
   },
   {
     "revision": "03232079f2807cfd0979404d5d6322e0",
@@ -1596,16 +1636,52 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/world-heritage/static/media/1551.1c8f639a.jpg"
   },
   {
+    "revision": "48099a4c97ffa8224907bbeec25ea7aa",
+    "url": "/world-heritage/static/media/1553.48099a4c.jpg"
+  },
+  {
+    "revision": "d754c88924332a7bf39bd7bbceb8daee",
+    "url": "/world-heritage/static/media/1557.d754c889.jpg"
+  },
+  {
+    "revision": "7691b2e8f5433daeb41d9b9009ea3074",
+    "url": "/world-heritage/static/media/1559.7691b2e8.jpg"
+  },
+  {
     "revision": "4e2e914e8cbb9f595f5244a92516bb88",
     "url": "/world-heritage/static/media/156.4e2e914e.jpg"
+  },
+  {
+    "revision": "1c44eab0b42e611f10abf3997eb1cfe0",
+    "url": "/world-heritage/static/media/1560.1c44eab0.jpg"
+  },
+  {
+    "revision": "942aa851b3058a0dc17515e65b356910",
+    "url": "/world-heritage/static/media/1562.942aa851.jpg"
+  },
+  {
+    "revision": "f84775fc4bc1e1ede46a7c472b7974d1",
+    "url": "/world-heritage/static/media/1563.f84775fc.jpg"
   },
   {
     "revision": "42016f15afe8ee9aba659abf113ad58c",
     "url": "/world-heritage/static/media/1565.42016f15.jpg"
   },
   {
+    "revision": "c692264e1f8afd07a1679611a6f8640c",
+    "url": "/world-heritage/static/media/1568.c692264e.jpg"
+  },
+  {
     "revision": "58877b157a5870194215b3683ed486e5",
     "url": "/world-heritage/static/media/157.58877b15.jpg"
+  },
+  {
+    "revision": "627ae42e7c3987649bc1c5bcb0c71612",
+    "url": "/world-heritage/static/media/1572.627ae42e.jpg"
+  },
+  {
+    "revision": "3fd0cc33aefefc4698f40012ddcca151",
+    "url": "/world-heritage/static/media/1575.3fd0cc33.jpg"
   },
   {
     "revision": "b220b2f103592a67ad846747fbfc8ede",
