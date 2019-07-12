@@ -230,10 +230,8 @@ class MapComponent extends PureComponent {
         >
           <HelpButton />
         </MapControl>
-        {clusters.map(markerProps => {
-          const { id, numPoints, points } = markerProps
-
-          return numPoints === 1 ? (
+        {clusters.map(({ id, numPoints, points, ...markerProps }) =>
+          numPoints === 1 ? (
             <MarkerComponent
               key={id}
               {...points[0]}
@@ -258,8 +256,8 @@ class MapComponent extends PureComponent {
                 })
               }
             />
-          )
-        })}
+          ),
+        )}
       </GoogleMap>
     )
   }
