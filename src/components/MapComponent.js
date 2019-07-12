@@ -54,11 +54,14 @@ class MapComponent extends PureComponent {
     bounds: null,
   }
 
-  getCluster = supercluster(this.props.markers, {
-    minZoom: this.props.options.minZoom, // min zoom to generate clusters on
-    maxZoom: this.props.options.maxZoom, // max zoom level to cluster the points on
-    radius: this.props.options.clusterRadius, // cluster radius in pixels
-  })
+  getCluster = supercluster(
+    this.props.markers,
+    {
+      minZoom: this.props.options.minZoom, // min zoom to generate clusters on
+      maxZoom: this.props.options.maxZoom, // max zoom level to cluster the points on
+      radius: this.props.options.clusterRadius, // cluster radius in pixels
+    }
+  )
 
   onChange = ({ center, zoom, bounds }) => {
     this.setState({
@@ -66,118 +69,79 @@ class MapComponent extends PureComponent {
       zoom,
       bounds,
       clusters: bounds
-        ? this.getCluster({ center, zoom, bounds }).map(
-            ({ wx, wy, numPoints, points }) => ({
-              lat: wy,
-              lng: wx,
-              numPoints,
-              points,
-              id: `${numPoints}_${points.map(point => point.id).join('_')}`,
-            }),
-          )
-        : [],
+        ? this.getCluster({ center, zoom, bounds })
+          .map(({ wx, wy, numPoints, points }) => ({
+            lat: wy,
+            lng: wx,
+            numPoints,
+            points,
+            id: `${numPoints}_${points.map(point => point.id).join('_')}`,
+          }))
+        : []
     })
   }
 
-  panTo = ({
-    lat,
-    lng,
-    callback = false,
-    shouldZoom = false,
-    shouldCenter = false,
-  }) => {
-    this.map &&
-      (() => {
-        const { map, maps } = this
+  panTo = ({ lat, lng, callback = false, shouldZoom = false, shouldCenter = false }) => {
+    this.map && (() => {
+      const { map, maps } = this
         map.panTo({ lat, lng })
         shouldZoom && map.setZoom(13) // zoom to the closest level so the marker is def. not clustered
         !shouldCenter && map.panBy(0, -230) // make sure the infowindow is in sight
         callback && maps.event.addListenerOnce(map, 'idle', callback)
-      })()
+    })()
   }
 
-  panToMarker = ({
-    id,
-    lat,
-    lng,
-    closeOpenMarker = false,
-    shouldZoom = false,
-  }) => {
+  panToMarker = ({id, lat, lng, closeOpenMarker = false, shouldZoom = false}) => {
     if (closeOpenMarker) {
       this.setState({ clickedMarkerId: -1 }, () => {
-        this.panTo({
-          lat,
-          lng,
-          callback: () => {
-            this.setState({ clickedMarkerId: id })
-          },
-          shouldZoom,
-        })
+        this.panTo({ lat, lng, callback: () => {
+          this.setState({ clickedMarkerId: id })
+        }, shouldZoom })
       })
       return
     }
 
-    this.panTo({
-      lat,
-      lng,
-      callback: () => {
-        this.setState({ clickedMarkerId: id })
-      },
-      shouldZoom,
-    })
+    this.panTo({ lat, lng, callback: () => {
+      this.setState({ clickedMarkerId: id })
+    }, shouldZoom })
   }
 
   panToRandomMarker = () => {
     const { props } = this
-    const randomMarker =
-      props.markers[Math.floor(Math.random() * props.markers.length)]
-    this.panToMarker({
-      ...randomMarker,
-      id: `1_${randomMarker.id}`,
-      closeOpenMarker: true,
-      shouldZoom: true,
-    })
+    const randomMarker = props.markers[Math.floor(Math.random() * props.markers.length)]
+    this.panToMarker({...randomMarker, id: `1_${randomMarker.id}`, closeOpenMarker: true, shouldZoom: true})
   }
 
   onMapClick = clickObj => {
     // Important! all of our stuff has classNames, so if we click something without one, we
     // must have clicked the map, so we remove the open marker.
-    if (
-      clickObj.event.target.className === '' &&
-      this.state.clickedMarkerId !== -1
-    ) {
+    if (clickObj.event.target.className === '' && this.state.clickedMarkerId !== -1) {
       this.setState({ clickedMarkerId: -1 })
     }
   }
 
-  onMarkerClick = ({ id, lat, lng }) => {
+  onMarkerClick = ({id, lat, lng}) => {
     if (this.state.clickedMarkerId === id) {
       this.setState({ clickedMarkerId: -1 })
       return
     }
-    this.panToMarker({
-      id,
-      lat,
-      lng,
-      closeOpenMarker: this.state.clickedMarkerId !== -1,
-    })
+    this.panToMarker({id, lat, lng, closeOpenMarker: this.state.clickedMarkerId !== -1})
   }
 
-  onClusterClick = ({ lat, lng }) => {
+  onClusterClick = ({lat, lng}) => {
     if (this.state.clickedMarkerId !== -1) {
       this.setState({ clickedMarkerId: -1 }, () => {
         this.panTo({ lat, lng, shouldCenter: true })
       })
       return
     }
-    this.panTo({ lat, lng, shouldCenter: true })
+    this.panTo({lat, lng, shouldCenter: true})
   }
 
-  onSearchResultClick = ({ id, lat, lng }) => {
+  onSearchResultClick = ({id, lat, lng}) => {
     this.panToMarker({
       id: `1_${id}`,
-      lat,
-      lng,
+      lat, lng,
       closeOpenMarker: this.state.clickedMarkerId !== -1,
       shouldZoom: true,
     })
@@ -195,69 +159,47 @@ class MapComponent extends PureComponent {
         zoom={this.state.zoom}
         onChange={this.onChange}
         onClick={this.onMapClick}
-        onGoogleApiLoaded={({ map, maps }) => {
+        onGoogleApiLoaded={({map, maps}) => {
           this.map = map
           this.maps = maps
           // we need this setState to force a mapcontrol render...
-          this.setState({ mapControlShouldRender: true })
+          this.setState({mapControlShouldRender: true})
         }}
         yesIWantToUseGoogleMapApiInternals
       >
-        <MapControl
-          map={this.map || null}
-          controlPosition={
-            this.maps ? this.maps.ControlPosition.TOP_LEFT : null
-          }
+        <MapControl map={this.map || null}
+          controlPosition={this.maps ? this.maps.ControlPosition.TOP_LEFT : null}
         >
-          <SearchBox
-            data={props.markers}
-            onResultClick={this.onSearchResultClick}
-          />
+          <SearchBox data={props.markers} onResultClick={this.onSearchResultClick}/>
         </MapControl>
-        <MapControl
-          map={this.map || null}
-          controlPosition={
-            this.maps ? this.maps.ControlPosition.TOP_LEFT : null
-          }
+        <MapControl map={this.map || null}
+          controlPosition={this.maps ? this.maps.ControlPosition.TOP_LEFT : null}
         >
-          <RandomSiteButton onClick={this.panToRandomMarker} />
+          <RandomSiteButton onClick={this.panToRandomMarker}/>
         </MapControl>
-        <MapControl
-          map={this.map || null}
-          controlPosition={
-            this.maps ? this.maps.ControlPosition.TOP_LEFT : null
-          }
+        <MapControl map={this.map || null}
+          controlPosition={this.maps ? this.maps.ControlPosition.TOP_LEFT : null}
         >
-          <HelpButton />
+          <HelpButton/>
         </MapControl>
-        {clusters.map(({ id, numPoints, points, ...markerProps }) =>
-          numPoints === 1 ? (
-            <MarkerComponent
-              key={id}
-              {...points[0]}
-              {...markerProps}
-              clicked={this.state.clickedMarkerId === id}
-              onClick={() =>
-                this.onMarkerClick({
-                  id,
-                  lat: markerProps.lat,
-                  lng: markerProps.lng,
-                })
-              }
-            />
-          ) : (
-            <ClusterComponent
-              key={id}
-              {...markerProps}
-              onClick={() =>
-                this.onClusterClick({
-                  lat: markerProps.lat,
-                  lng: markerProps.lng,
-                })
-              }
-            />
-          ),
-        )}
+        {
+          clusters.map(({...markerProps, id, numPoints, points}) => (
+            numPoints === 1
+              ? <MarkerComponent
+                  key={id}
+                  {...points[0]}
+                  {...markerProps}
+                  clicked={this.state.clickedMarkerId === id}
+                  onClick={() => this.onMarkerClick({id, lat: markerProps.lat, lng: markerProps.lng})}
+                />
+              : <ClusterComponent
+                  key={id}
+                  {...markerProps}
+                  onClick={() => this.onClusterClick({lat: markerProps.lat, lng: markerProps.lng})}
+                />
+              )
+            )
+          }
       </GoogleMap>
     )
   }
