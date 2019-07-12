@@ -10,7 +10,7 @@
 /build
 
 # site image assets
-/src/assets/site_images*
+/src/assets/site_images
 
 # apikey
 /src/assets/js/apikey.js
