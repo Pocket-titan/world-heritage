@@ -16,19 +16,28 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-motion": "^0.5.2",
-    "react-scripts": "3.0.0"
+    "react-scripts": "^3.0.1",
+    "xlsx": "^0.14.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "scrape_images": "node ./src/utils/webscraper.js",
-    "scrape_danger": "node ./src/utils/dangerListScraper.js",
+    "convert-xls": "babel-node ./src/utils/xlstojson.js",
+    "scrape": "babel-node ./src/utils/scraper.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/node": "^7.5.0",
+    "@babel/plugin-proposal-partial-application": "^7.4.4",
+    "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
+    "babel-eslint": "^11.0.0-beta.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "kdbush": "^2.0.1",
     "rbush": "^2.0.2"
   },

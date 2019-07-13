@@ -230,31 +230,31 @@ class MapComponent extends PureComponent {
         >
           <HelpButton />
         </MapControl>
-        {clusters.map(markerProps => {
-          const { id, numPoints, points } = markerProps
+        {clusters.map(cluster => {
+          const { id, numPoints, points } = cluster
 
           return numPoints === 1 ? (
             <MarkerComponent
               key={id}
               {...points[0]}
-              {...markerProps}
+              {...cluster}
               clicked={this.state.clickedMarkerId === id}
               onClick={() =>
                 this.onMarkerClick({
                   id,
-                  lat: markerProps.lat,
-                  lng: markerProps.lng,
+                  lat: cluster.lat,
+                  lng: cluster.lng,
                 })
               }
             />
           ) : (
             <ClusterComponent
               key={id}
-              {...markerProps}
+              {...cluster}
               onClick={() =>
                 this.onClusterClick({
-                  lat: markerProps.lat,
-                  lng: markerProps.lng,
+                  lat: cluster.lat,
+                  lng: cluster.lng,
                 })
               }
             />

@@ -21,6 +21,7 @@ const MarkerComponent = props => {
     : props.category === 'Natural'
     ? Tree
     : Mixed
+
   return (
     <div>
       <div className="marker-component" onClick={props.onClick}>
