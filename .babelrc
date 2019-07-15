@@ -1,7 +1,0 @@
-{
-  "presets": ["@babel/preset-env"],
-  "plugins": [
-    ["@babel/proposal-pipeline-operator", { "proposal": "fsharp" }],
-    "@babel/plugin-proposal-partial-application"
-  ]
-}

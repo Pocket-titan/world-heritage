@@ -13,7 +13,7 @@ import apiKey from '../assets/js/apikey.js'
 import mapStyle from '../assets/js/mapStyle.json'
 import dangerList from '../assets/js/dangerList.json'
 
-const markerData = require('../assets/js/whc-sites-2017.json')
+const markerData = require('../assets/js/whc-sites.json')
   .map(site => ({
     title: site.name_en,
     lat: parseFloat(site.latitude),

@@ -1,9 +1,0 @@
-{
-  "parser": "babel-eslint",
-  "extends": ["react-app"],
-  "rules": {
-    "semi": "off",
-    "quotes": ["error", "single"],
-    "strict": 0
-  }
-}

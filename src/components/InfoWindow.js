@@ -4,7 +4,7 @@ import Parser from 'html-react-parser'
 import images from '../assets/js/images.js'
 import captions from '../assets/js/imageCaptions.json'
 
-const markerInformation = require('../assets/js/whc-sites-2017.json').reduce(
+const markerInformation = require('../assets/js/whc-sites.json').reduce(
   (obj, site) => {
     if (!site.latitude || !site.longitude) {
       return obj

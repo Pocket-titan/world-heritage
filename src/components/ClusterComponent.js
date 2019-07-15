@@ -2,8 +2,8 @@ import React from 'react'
 import colormap from 'colormap'
 
 const customColorMap = [
-  {index: 0, rgb: [144, 164, 224]},
-  {index: 1, rgb: [66, 85, 132]},
+  { index: 0, rgb: [144, 164, 224] },
+  { index: 1, rgb: [66, 85, 132] },
 ]
 
 const range = [2, 4, 5, 7, 10, 15, 20, 30, 50, 75, 100]
@@ -16,11 +16,11 @@ const colors = colormap({
 })
 
 const getColor = number => {
-  const index = range.findIndex((maxNumber) => number <= maxNumber)
-  return colors[index]
+  const index = range.findIndex(maxNumber => number <= maxNumber)
+  return colors[index] || colors[range.length - 1]
 }
 
-const getBackgroundColor = (numPoints) => {
+const getBackgroundColor = numPoints => {
   if (!numPoints) return
   const [r, g, b] = getColor(numPoints)
   return `rgb(${r}, ${g}, ${b})`
@@ -36,10 +36,12 @@ const ClusterComponent = props => (
   <div className="cluster-component" onClick={props.onClick}>
     <div
       className="cluster"
-      style={{backgroundColor: getBackgroundColor(props.numPoints), border: getBorder(props.numPoints)}}>
-      <span className="cluster-text">
-        {props.numPoints}
-      </span>
+      style={{
+        backgroundColor: getBackgroundColor(props.numPoints),
+        border: getBorder(props.numPoints),
+      }}
+    >
+      <span className="cluster-text">{props.numPoints}</span>
     </div>
   </div>
 )
