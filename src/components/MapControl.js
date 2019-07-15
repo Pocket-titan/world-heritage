@@ -20,34 +20,40 @@ class MapControl extends Component {
   }
 
   componentWillUnmount() {
-		const { props } = this
+    const { props } = this
     if (!props.map) return
-		const index = props.map.controls[props.controlPosition].getArray().indexOf(this.el)
-		props.map.controls[props.controlPosition].removeAt(index)
-	}
+    const index = props.map.controls[props.controlPosition]
+      .getArray()
+      .indexOf(this.el)
+    props.map.controls[props.controlPosition].removeAt(index)
+  }
 
   _render() {
     const { props } = this
     if (!props.map || !props.controlPosition) return
     render(
-      <div ref={el => {
-        if (!this.renderedOnce) {
-          this.el = el
-          props.map.controls[props.controlPosition].push(el)
-        } else if (el && this.el && el !== this.el) {
-          this.el.innerHTML = '';
-          [].slice.call(el.childNodes).forEach(child => this.el.appendChild(child))
-        }
-        this.renderedOnce = true
-      }}>
+      <div
+        ref={el => {
+          if (!this.renderedOnce) {
+            this.el = el
+            props.map.controls[props.controlPosition].push(el)
+          } else if (el && this.el && el !== this.el) {
+            this.el.innerHTML = ''
+            ;[].slice
+              .call(el.childNodes)
+              .forEach(child => this.el.appendChild(child))
+          }
+          this.renderedOnce = true
+        }}
+      >
         {props.children}
       </div>,
-      document.createElement('div')
+      document.createElement('div'),
     )
   }
 
   render() {
-    return <noscript/>
+    return <noscript />
   }
 }
 

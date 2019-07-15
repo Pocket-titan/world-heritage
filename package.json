@@ -1,8 +1,12 @@
 {
   "homepage": "https://pocket-titan.github.io/world-heritage",
   "name": "world-heritage",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
     "cheerio": "^1.0.0-rc.3",
     "colormap": "^2.3.0",
     "font-awesome": "^4.7.0",
@@ -13,24 +17,25 @@
     "node-fetch": "^2.6.0",
     "path": "^0.12.7",
     "points-cluster": "^0.1.4",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
     "react-motion": "^0.5.2",
-    "react-scripts": "3.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "scrape_images": "node ./src/utils/webscraper.js",
-    "scrape_danger": "node ./src/utils/dangerListScraper.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "xlsx": "^0.14.3"
   },
   "devDependencies": {
     "kdbush": "^2.0.1",
     "rbush": "^2.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "convert-xls": "babel-node --presets=env ./src/utils/xlstojson.js",
+    "scrape": "babel-node --presets=env ./src/utils/scraper.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
