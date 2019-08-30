@@ -11,18 +11,7 @@ import HelpButton from './HelpButton'
 
 import apiKey from '../assets/js/apikey.js'
 import mapStyle from '../assets/js/mapStyle.json'
-import dangerList from '../assets/js/dangerList.json'
-
-const markerData = require('../assets/js/whc-sites.json')
-  .map(site => ({
-    title: site.name_en,
-    lat: parseFloat(site.latitude),
-    lng: parseFloat(site.longitude),
-    category: site.category,
-    id: parseInt(site.id_no, 10),
-    danger: dangerList.some(danger_id => danger_id === site.id_no),
-  }))
-  .filter(marker => marker.lat && marker.lng)
+import markerData from '../assets/js/markers.js'
 
 class MapComponent extends PureComponent {
   static defaultProps = {

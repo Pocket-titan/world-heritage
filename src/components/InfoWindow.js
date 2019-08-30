@@ -2,24 +2,13 @@ import React, { PureComponent } from 'react'
 
 import Parser from 'html-react-parser'
 import images from '../assets/js/images.js'
+import markerData from '../assets/js/markers.js'
 import captions from '../assets/js/imageCaptions.json'
 
-const markerInformation = require('../assets/js/whc-sites.json').reduce(
-  (obj, site) => {
-    if (!site.latitude || !site.longitude) {
-      return obj
-    }
-    const information = {
-      info: site.short_description_en,
-      title: site.name_en,
-      image_name: `${site.id_no}`,
-      id: parseInt(site.id_no, 10),
-    }
-    obj[site.id_no] = information
-    return obj
-  },
-  {},
-)
+const markerInformation = markerData.reduce((obj, site) => {
+  obj[site.id] = site
+  return obj
+}, {})
 
 class InfoWindow extends PureComponent {
   static defaultProps = {

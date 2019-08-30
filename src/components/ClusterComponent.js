@@ -21,13 +21,19 @@ const getColor = number => {
 }
 
 const getBackgroundColor = numPoints => {
-  if (!numPoints) return
+  if (!numPoints) {
+    throw new Error('No numpoints provided!')
+  }
+
   const [r, g, b] = getColor(numPoints)
   return `rgb(${r}, ${g}, ${b})`
 }
 
 const getBorder = (numPoints, darken = 40) => {
-  if (!numPoints) return
+  if (!numPoints) {
+    throw new Error('No numpoints provided!')
+  }
+
   const [r, g, b] = getColor(numPoints).map(val => Math.abs(val - darken))
   return `2px solid rgb(${r}, ${g}, ${b})`
 }
