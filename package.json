@@ -14,7 +14,7 @@
     "google-map-react": "^1.0.5",
     "html-react-parser": "^0.4.6",
     "image-downloader": "^3.4.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "path": "^0.12.7",
     "points-cluster": "^0.1.4",
     "react-motion": "^0.5.2",
