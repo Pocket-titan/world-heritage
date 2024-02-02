@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/world-heritage/static/css/main.022112fe.css",
+    "main.css": "/world-heritage/static/css/main.f0c00d54.css",
     "main.js": "/world-heritage/static/js/main.6290135c.js",
     "static/media/1388.jpg": "/world-heritage/static/media/1388.837cc373a3470bdef18b.jpg",
     "static/media/1567.jpg": "/world-heritage/static/media/1567.c125c5cb0f0303dc6c93.jpg",
@@ -1203,11 +1203,11 @@
     "static/media/682.jpg": "/world-heritage/static/media/682.fc3dc1ab06a4a08d01a5.jpg",
     "static/media/1216.jpg": "/world-heritage/static/media/1216.105656eca54e5888e8c2.jpg",
     "index.html": "/world-heritage/index.html",
-    "main.022112fe.css.map": "/world-heritage/static/css/main.022112fe.css.map",
+    "main.f0c00d54.css.map": "/world-heritage/static/css/main.f0c00d54.css.map",
     "main.6290135c.js.map": "/world-heritage/static/js/main.6290135c.js.map"
   },
   "entrypoints": [
-    "static/css/main.022112fe.css",
+    "static/css/main.f0c00d54.css",
     "static/js/main.6290135c.js"
   ]
 }
