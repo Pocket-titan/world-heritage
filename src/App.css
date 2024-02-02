@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans');
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Open+Sans");
 
 :root {
-  --infowindow-height: 369px;
+  --infowindow-height: 420px;
   --infowindow-width: 705px;
   --cluster-radius: 23px;
 }
@@ -13,7 +13,11 @@ body {
 }
 
 .bg {
-  background: linear-gradient(to bottom, hsl(224, 39%, 35%) 0%, hsl(224, 39%, 50%) 70%);
+  background: linear-gradient(
+    to bottom,
+    hsl(224, 39%, 35%) 0%,
+    hsl(224, 39%, 50%) 70%
+  );
   position: absolute;
   left: 0;
   top: 0;
@@ -33,15 +37,15 @@ body {
 
 @keyframes bgFade {
   0% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 
   50% {
-    background-position: 100% 50%
+    background-position: 100% 50%;
   }
 
   100% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 }
 
@@ -59,6 +63,13 @@ body {
   background: linear-gradient(270deg, #BF7B77, #E4B103, #549833, #4AD2A4, #787BC5, #BD64C0);
   animation: bgFade 60s ease infinite;
   background-size: 600% 600%; */
+}
+
+@media (max-width: 850px) {
+  .header {
+    /* padding: 20px 0 20px 0; */
+    flex: 1;
+  }
 }
 
 .header-center {
@@ -116,6 +127,12 @@ body {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 55px 0px;
 }
 
+@media (max-width: 850px) {
+  .map {
+    width: 100%;
+  }
+}
+
 .marker-component {
   cursor: pointer;
   width: calc(30px * 2.5);
@@ -136,7 +153,7 @@ body {
   position: absolute;
   width: 30px;
   height: 60px;
-  transform-origin: calc(30px/2) 60px;
+  transform-origin: calc(30px / 2) 60px;
 }
 
 /* outer container so we can increase the hover distance a bit */
@@ -252,6 +269,12 @@ body {
   opacity: 1;
 }
 
+.legend-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .control-tooltip {
   visibility: hidden;
   opacity: 0;
@@ -295,7 +318,8 @@ body {
   height: 25px;
 }
 
-.legend-text {}
+.legend-text {
+}
 
 /* infowindow */
 .infowindow-container {
@@ -324,12 +348,16 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
+
+  width: var(--infowindow-width);
+  height: var(--infowindow-height);
+
   /* align-items: center;
   justify-content: center; */
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .title-container {
@@ -353,7 +381,9 @@ body {
   align-items: center;
   /* justify-content: space-between; */
   font-family: Open Sans;
-  height: 100%;
+  /* height: 100%; */
+
+  height: 90%;
 }
 
 /* image and caption */
@@ -379,8 +409,8 @@ body {
   font-style: italic;
   text-align: center;
   white-space: pre-line;
-  margin-top: -15px;
-  margin-bottom: 25px;
+  /* margin-top: -15px; */
+  /* margin-bottom: 25px; */
 }
 
 /* body and link */
@@ -433,8 +463,13 @@ body {
   background-color: white;
   position: absolute;
   /* bottom: -10px; */
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   margin-left: 350px;
+}
+
+.gm-style {
+  border: none !important;
+  outline: none !important;
 }
 
 /* terms of service */
@@ -450,7 +485,12 @@ body {
 } */
 
 .mail {
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: rgb(76, 135, 214);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  cursor: pointer;
+
   color: black;
   margin-left: 3px;
 }
@@ -465,7 +505,26 @@ body {
   justify-content: center;
   display: flex;
   color: black;
-  opacity: 0.3;
+  opacity: 0.6;
   font-style: italic;
-  font-size: 11px;
+  font-size: 13px;
+}
+
+@media (max-width: 850px) {
+  .footer {
+    flex: 1;
+  }
+
+  .circle {
+    margin-left: 300px;
+  }
+
+  :root {
+    --infowindow-height: 500px;
+    --infowindow-width: 605px;
+  }
+}
+
+iframe + div {
+  border: none !important;
 }

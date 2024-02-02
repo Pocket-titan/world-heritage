@@ -1,24 +1,24 @@
-import React from 'react'
+import React from "react"
 
-import InfoWindow from './InfoWindow'
+import InfoWindow from "./InfoWindow"
 
-import Pillar from '../assets/images/Pillar.png'
-import PillarDanger from '../assets/images/PillarDanger.png'
-import Tree from '../assets/images/Tree.png'
-import TreeDanger from '../assets/images/TreeDanger.png'
-import Mixed from '../assets/images/Mixed.png'
-import MixedDanger from '../assets/images/MixedDanger.png'
+import Pillar from "../assets/images/Pillar.png"
+import PillarDanger from "../assets/images/PillarDanger.png"
+import Tree from "../assets/images/Tree.png"
+import TreeDanger from "../assets/images/TreeDanger.png"
+import Mixed from "../assets/images/Mixed.png"
+import MixedDanger from "../assets/images/MixedDanger.png"
 
-const MarkerComponent = props => {
+const MarkerComponent = (props) => {
   const image = props.danger
-    ? props.category === 'Cultural'
+    ? props.category === "Cultural"
       ? PillarDanger
-      : props.category === 'Natural'
+      : props.category === "Natural"
       ? TreeDanger
       : MixedDanger
-    : props.category === 'Cultural'
+    : props.category === "Cultural"
     ? Pillar
-    : props.category === 'Natural'
+    : props.category === "Natural"
     ? Tree
     : Mixed
 

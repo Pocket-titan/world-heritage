@@ -1,6 +1,24 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { render } from 'react-dom'
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import { createPortal, render } from "react-dom"
+
+export const useMapControl = (map, controlPosition, children) => {
+  React.useEffect(() => {
+    if (map && controlPosition) {
+      render(
+        <div ref={(el) => map.controls[controlPosition].push(el)}>
+          {children}
+        </div>,
+        document.createElement("div")
+      )
+    }
+    return () => {
+      if (map && controlPosition) {
+        map.controls[controlPosition].clear()
+      }
+    }
+  }, [map, controlPosition])
+}
 
 class MapControl extends Component {
   static propTypes = {
@@ -33,26 +51,44 @@ class MapControl extends Component {
     if (!props.map || !props.controlPosition) return
     render(
       <div
-        ref={el => {
+        onClick={() => {
+          console.log("cli")
+        }}
+        ref={(el) => {
+          console.log(`el`, el)
+
           if (!this.renderedOnce) {
             this.el = el
             props.map.controls[props.controlPosition].push(el)
           } else if (el && this.el && el !== this.el) {
-            this.el.innerHTML = ''
+            this.el.innerHTML = ""
             ;[].slice
               .call(el.childNodes)
-              .forEach(child => this.el.appendChild(child))
+              .forEach((child) => this.el.appendChild(child))
           }
           this.renderedOnce = true
         }}
       >
-        {props.children}
+        {/* {props.children} */}
+        <div
+          style={{
+            width: 100,
+            height: 100,
+            zIndex: 999999,
+          }}
+          onClick={() => {
+            alert("clicked")
+          }}
+        >
+          click me
+        </div>
       </div>,
-      document.createElement('div'),
+      document.createElement("div")
     )
   }
 
   render() {
+    console.log(this.props)
     return <noscript />
   }
 }

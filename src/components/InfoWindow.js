@@ -1,10 +1,9 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent } from "react"
+import Parser from "html-react-parser"
+import images from "../assets/js/images.js"
+import captions from "../assets/js/imageCaptions.json"
 
-import Parser from 'html-react-parser'
-import images from '../assets/js/images.js'
-import captions from '../assets/js/imageCaptions.json'
-
-const markerInformation = require('../assets/js/whc-sites.json').reduce(
+const markerInformation = require("../assets/js/whc-sites.json").reduce(
   (obj, site) => {
     if (!site.latitude || !site.longitude) {
       return obj
@@ -18,29 +17,75 @@ const markerInformation = require('../assets/js/whc-sites.json').reduce(
     obj[site.id_no] = information
     return obj
   },
-  {},
+  {}
 )
+
+const Content = ({ data, id }) => {
+  let children =
+    typeof data.body === "string" ? data.body : data.body?.props?.children || ""
+
+  // should always be true
+  if (typeof children === "string" && children.length > 1000) {
+    children = children.slice(0, 1000) + "..."
+  }
+
+  return (
+    <div className="content-container">
+      {data.image && (
+        <div className="image-and-caption-container">
+          <img className="image" src={data.image} alt={data.caption} />
+          <p
+            className="caption"
+            style={{
+              fontSize: data.caption.length <= 200 ? 12.5 : 9,
+            }}
+          >
+            {data.caption}
+          </p>
+        </div>
+      )}
+      <div className="body-and-link-container">
+        <span
+          className="body"
+          style={{
+            fontSize:
+              children.length <= 600 ? 15 : children.length <= 920 ? 13 : 12,
+          }}
+        >
+          {children}
+        </span>
+        <a
+          className="link"
+          target="_blank"
+          href={`https://whc.unesco.org/en/list/${id}`}
+        >
+          More Information
+        </a>
+      </div>
+    </div>
+  )
+}
 
 class InfoWindow extends PureComponent {
   static defaultProps = {
     introStyle: {
-      scale: 182,
-      circleOffset: 100,
+      scale: 210,
+      circleOffset: 120,
       arrowOffset: 0,
       arrowOpacity: 1,
-      transition: 'all .5s linear',
+      transition: "all .5s linear",
       zIndex: 99,
-      dataTransition: 'opacity 0.6s ease-in-out 0.3s',
+      dataTransition: "opacity 0.6s ease-in-out 0.3s",
     },
     outroStyle: {
       scale: 1,
       circleOffset: -10,
       arrowOffset: -10,
       arrowOpacity: 0,
-      transition: 'all 0.7s ease-in-out',
+      transition: "all 0.7s ease-in-out",
       zIndex: 98,
       dataOpacity: 0,
-      dataTransition: 'opacity 0.25s ease-in-out',
+      dataTransition: "opacity 0.25s ease-in-out",
     },
   }
 
@@ -51,15 +96,17 @@ class InfoWindow extends PureComponent {
   }
 
   _asyncLoadData = async () => {
-    const id = parseInt(this.props.id.replace('1_', ''), 10)
+    const id = parseInt(this.props.id.replace("1_", ""), 10)
     const marker = markerInformation[id]
+
     const [body, title, caption, image] = await Promise.all([
       Parser(marker.info),
       Parser(marker.title),
       Parser(captions[id]),
       images[id],
     ])
-    this.setState(prevState => ({
+
+    this.setState((prevState) => ({
       data: {
         body,
         title,
@@ -71,16 +118,17 @@ class InfoWindow extends PureComponent {
         dataOpacity: 0,
       },
     }))
+
     setTimeout(
       () =>
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
           // transition data in
           style: {
             ...prevState.style,
             dataOpacity: 1,
           },
         })),
-      10,
+      10
     )
   }
 
@@ -114,79 +162,34 @@ class InfoWindow extends PureComponent {
 
   render() {
     const {
-      scale,
-      circleOffset,
-      arrowOffset,
-      arrowOpacity,
-      transition,
-      zIndex,
-      dataOpacity,
-      dataTransition,
-    } = this.state.style
+      data,
+      style: {
+        scale,
+        circleOffset,
+        arrowOffset,
+        arrowOpacity,
+        transition,
+        zIndex,
+        dataOpacity,
+        dataTransition,
+      },
+    } = this.state
+
+    const id = parseInt(this.props.id.replace("1_", ""), 10)
+
     return (
       this.state.show && (
         <div className="infowindow-container" style={{ transition, zIndex }}>
           <div className="infowindow">
-            {this.state.data && (
+            {data && (
               <div
                 className="infowindow-inner"
                 style={{ opacity: dataOpacity, transition: dataTransition }}
               >
                 <div className="title-container">
-                  <h1 className="title">{this.state.data.title}</h1>
+                  <h1 className="title">{data.title}</h1>
                 </div>
-                <div className="content-container">
-                  {this.state.data.image && (
-                    <div className="image-and-caption-container">
-                      <img
-                        className="image"
-                        src={this.state.data.image}
-                        alt={this.state.data.caption}
-                      />
-                      <p
-                        className="caption"
-                        style={{
-                          fontSize: (() => {
-                            const length = this.state.data.caption.length
-                            if (length <= 200) {
-                              return 12.5
-                            } else {
-                              return 9
-                            }
-                          })(),
-                        }}
-                      >
-                        {this.state.data.caption}
-                      </p>
-                    </div>
-                  )}
-                  <div className="body-and-link-container">
-                    <span
-                      className="body"
-                      style={{
-                        fontSize: (() => {
-                          const { children } = this.state.data.body.props
-                          if (children.length <= 600) {
-                            return 15
-                          } else if (children.length <= 950) {
-                            return 13
-                          } else {
-                            return 12
-                          }
-                        })(),
-                      }}
-                    >
-                      {this.state.data.body.props.children}
-                    </span>
-                    <a
-                      className="link"
-                      target="_blank"
-                      href={`https://whc.unesco.org/en/list/${this.props.id}`}
-                    >
-                      More Information
-                    </a>
-                  </div>
-                </div>
+                <Content data={data} id={id} />
               </div>
             )}
             <div

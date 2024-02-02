@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Unesco } from './assets/js/svgImages.js'
-import MapComponent from './components/MapComponent'
-import './App.css'
-import 'font-awesome/css/font-awesome.min.css'
+import React, { Component } from "react"
+import { Unesco } from "./assets/js/svgImages.js"
+import MapComponent from "./components/MapComponent"
+import "font-awesome/css/font-awesome.min.css"
+import "./App.css"
 
-const SVGIcon = props => {
+const SVGIcon = (props) => {
   const svgString = props.svgString.toString()
   return (
     <div
@@ -30,18 +30,18 @@ const Header = () => (
       <SVGIcon
         svgString={Unesco}
         style={{
-          transform: 'scale(0.2)',
-          transformOrigin: 'left',
-          width: '82px',
+          transform: "scale(0.2)",
+          transformOrigin: "left",
+          width: "82px",
         }}
         className="unesco"
       />
       <div
         style={{
-          flexDirection: 'column',
-          textAlign: 'left',
+          flexDirection: "column",
+          textAlign: "left",
           paddingLeft: 5,
-          fontFamily: 'Montserrat',
+          fontFamily: "Montserrat",
         }}
       >
         <p style={{ marginBottom: 5 }}>World Heritage</p>
@@ -67,7 +67,7 @@ const Map = () => (
 
 const Footer = () => (
   <div className="footer">
-    made by{' '}
+    made by{" "}
     <a className="mail" href="mailto:jelmargerritsen@gmail.com">
       jelmargerritsen@gmail.com
     </a>
@@ -76,7 +76,7 @@ const Footer = () => (
 
 class App extends Component {
   componentDidMount() {
-    document.title = 'World Heritage Map'
+    document.title = "World Heritage Map"
   }
 
   render() {

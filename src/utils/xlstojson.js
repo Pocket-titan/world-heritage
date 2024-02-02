@@ -6,7 +6,7 @@ import xlsx from 'xlsx'
 import path from 'path'
 import fs from 'fs'
 
-const filename = 'whc-sites-2018.xls'
+const filename = 'whc-sites-2023.xls'
 let workbook = xlsx.readFile(__dirname + '/' + filename)
 let sheet = workbook.Sheets[workbook.SheetNames[0]]
 let data = xlsx.utils.sheet_to_json(sheet)
