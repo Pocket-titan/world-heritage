@@ -18,14 +18,16 @@ const SVGIcon = (props) => {
 
 const Header = () => (
   <div className="header">
-    <a
-      rel="noopener noreferrer"
-      className="header-menu left"
-      target="_blank"
-      href="http://www.unesco.org/"
-    >
-      Unesco
-    </a>
+    <div className="left">
+      <a
+        rel="noopener noreferrer"
+        className="header-menu"
+        target="_blank"
+        href="http://www.unesco.org/"
+      >
+        Unesco
+      </a>
+    </div>
     <div className="header-center">
       <SVGIcon
         svgString={Unesco}
@@ -48,14 +50,16 @@ const Header = () => (
         <p style={{ marginTop: 5 }}>Interactive Map</p>
       </div>
     </div>
-    <a
-      rel="noopener noreferrer"
-      className="header-menu right"
-      target="_blank"
-      href="http://whc.unesco.org/en/list/"
-    >
-      About
-    </a>
+    <div className="right">
+      <a
+        rel="noopener noreferrer"
+        className="header-menu"
+        target="_blank"
+        href="http://whc.unesco.org/en/list/"
+      >
+        About
+      </a>
+    </div>
   </div>
 )
 

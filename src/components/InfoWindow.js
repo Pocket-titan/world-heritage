@@ -29,18 +29,25 @@ const Content = ({ data, id }) => {
     children = children.slice(0, 1000) + "..."
   }
 
+  let caption = data.image && data.caption ? data.caption : ""
+
+  if (caption.length > 200) {
+    caption = caption.slice(0, 200) + "..."
+  }
+
   return (
     <div className="content-container">
       {data.image && (
         <div className="image-and-caption-container">
-          <img className="image" src={data.image} alt={data.caption} />
+          <img className="image" src={data.image} alt={caption} />
           <p
             className="caption"
             style={{
-              fontSize: data.caption.length <= 200 ? 12.5 : 9,
+              "--multiplier":
+                caption.length <= 100 ? 1 : caption.length <= 150 ? 0.9 : 0.8,
             }}
           >
-            {data.caption}
+            {caption}
           </p>
         </div>
       )}
@@ -48,8 +55,8 @@ const Content = ({ data, id }) => {
         <span
           className="body"
           style={{
-            fontSize:
-              children.length <= 600 ? 15 : children.length <= 920 ? 13 : 12,
+            "--multiplier":
+              children.length <= 600 ? 1 : children.length <= 750 ? 0.9 : 0.8,
           }}
         >
           {children}
